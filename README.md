@@ -75,3 +75,8 @@ openssl x509 \
 ```
 
 Where IP is `127.0.0.1` in this case.
+
+### Usage
+1. Run server `go run ./server/main.go`
+
+2. Run client `go run ./client/main.go`
