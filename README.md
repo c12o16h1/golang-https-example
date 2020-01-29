@@ -2,7 +2,7 @@
 
 ### Generating certificates
 
-1. Case where host called by domain (any domain name will work)
+1. Case where server called by domain (any domain name will work)
 ```
 openssl req \
     -newkey rsa:2048 \
@@ -11,13 +11,13 @@ openssl req \
     -x509 \
     -keyout ca.key \
     -out ca.crt \
-    -subj "/C=US/ST=California/L=Los Angeles/O=Shipa/OU=IT Department/CN=*"
+    -subj "/C=US/ST=California/L=Los Angeles/O=Good Company/OU=IT Department/CN=*"
 openssl req \
     -newkey rsa:2048 \
     -nodes \
     -keyout server.key \
     -out server.csr \
-    -subj "/C=US/ST=California/L=Los Angeles/O=Shipa/OU=IT Department/CN=*"
+    -subj "/C=US/ST=California/L=Los Angeles/O=Good Company/OU=IT Department/CN=*"
 openssl req \
     -x509 \
     -nodes \
@@ -25,7 +25,7 @@ openssl req \
     -keyout client.key \
     -out client.crt \
     -days 3650 \
-    -subj "/C=US/ST=California/L=Los Angeles/O=Shipa/OU=IT Department/CN=*"
+    -subj "/C=US/ST=California/L=Los Angeles/O=Good Company/OU=IT Department/CN=*"
 openssl x509 \
     -req \
     -days 365 \
@@ -37,7 +37,7 @@ openssl x509 \
     -out server.crt
 ```
 
-2. Case where host is IP (will work only on particular IP)
+2. Case where server is IP (will work only on particular IP)
 
 ```
 openssl req \
@@ -47,13 +47,13 @@ openssl req \
     -x509 \
     -keyout ca.key \
     -out ca.crt \
-    -subj "/C=US/ST=California/L=Los Angeles/O=Shipa/OU=IT Department/CN=*"
+    -subj "/C=US/ST=California/L=Los Angeles/O=Good Company/OU=IT Department/CN=*"
 openssl req \
     -newkey rsa:2048 \
     -nodes \
     -keyout server.key \
     -out server.csr \
-    -subj "/C=US/ST=California/L=Los Angeles/O=Shipa/OU=IT Department/CN=*"
+    -subj "/C=US/ST=California/L=Los Angeles/O=Good Company/OU=IT Department/CN=*"
 openssl req \
     -x509 \
     -nodes \
@@ -61,7 +61,7 @@ openssl req \
     -keyout client.key \
     -out client.crt \
     -days 3650 \
-    -subj "/C=US/ST=California/L=Los Angeles/O=Shipa/OU=IT Department/CN=*"
+    -subj "/C=US/ST=California/L=Los Angeles/O=Good Company/OU=IT Department/CN=*"
 openssl x509 \
     -req \
     -days 365 \
@@ -74,4 +74,4 @@ openssl x509 \
     -extfile <(echo subjectAltName = IP:127.0.0.1)
 ```
 
-Where IP is `127.0.0.1` for this case.
+Where IP is `127.0.0.1` in this case.
