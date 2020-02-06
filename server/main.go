@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	caCert, err := ioutil.ReadFile("client.crt")
+	caCert, err := ioutil.ReadFile("ca.crt")
 	if err != nil {
 		log.Fatal(err)
 	}

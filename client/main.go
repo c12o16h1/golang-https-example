@@ -10,23 +10,23 @@ import (
 )
 
 func main() {
-	caCert, err := ioutil.ReadFile("server.crt")
+	caCert, err := ioutil.ReadFile("ca.crt")
 	if err != nil {
 		log.Fatal(err)
 	}
 	caCertPool := x509.NewCertPool()
 	caCertPool.AppendCertsFromPEM(caCert)
 
-	cert, err := tls.LoadX509KeyPair("client.crt", "client.key")
-	if err != nil {
-		log.Fatal(err)
-	}
+	//cert, err := tls.LoadX509KeyPair("client.crt", "client.key")
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
 
 	client := &http.Client{
 		Transport: &http.Transport{
 			TLSClientConfig: &tls.Config{
-				RootCAs:      caCertPool,
-				Certificates: []tls.Certificate{cert},
+				RootCAs: caCertPool,
+				//Certificates: []tls.Certificate{cert},
 			},
 		},
 	}
