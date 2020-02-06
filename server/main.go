@@ -16,8 +16,8 @@ func main() {
 	caCertPool := x509.NewCertPool()
 	caCertPool.AppendCertsFromPEM(caCert)
 	cfg := &tls.Config{
-		ClientAuth: tls.RequireAndVerifyClientCert,
-		ClientCAs:  caCertPool,
+		//ClientAuth: tls.RequireAndVerifyClientCert,
+		ClientCAs: caCertPool,
 	}
 	srv := &http.Server{
 		Addr:      ":8443",
